@@ -102,32 +102,32 @@ class PostWidget(QtGui.QWidget):
         super(PostWidget, self).__init__(parent)
 
     def setupUi(self, item=None):
-        self.__layout = QtGui.QHBoxLayout()
-        self.__layout.setContentsMargins(5, 5, 5, 5)
+        rootLayout = QtGui.QHBoxLayout()
+        rootLayout.setContentsMargins(5, 5, 5, 5)
 
         self.__iconLabel = TwitterIconLabel()
-        self.__layout.addWidget(self.__iconLabel)
+        rootLayout.addWidget(self.__iconLabel)
 
-        self.__textLayout = QtGui.QVBoxLayout()
+        textLayoutt = QtGui.QVBoxLayout()
 
-        self.__infoLayout = QtGui.QHBoxLayout()
+        infoLayout = QtGui.QHBoxLayout()
         self.__name = QtGui.QLabel()
         self.__screenName = QtGui.QLabel()
         self.__createdAt = QtGui.QLabel()
-        self.__infoLayout.addWidget(self.__name)
-        self.__infoLayout.addSpacing(10)
-        self.__infoLayout.addWidget(self.__screenName)
-        self.__infoLayout.addSpacing(30)
-        self.__infoLayout.addWidget(self.__createdAt)
-        self.__infoLayout.addStretch()
-        self.__textLayout.addLayout(self.__infoLayout)
+        infoLayout.addWidget(self.__name)
+        infoLayout.addSpacing(10)
+        infoLayout.addWidget(self.__screenName)
+        infoLayout.addSpacing(30)
+        infoLayout.addWidget(self.__createdAt)
+        infoLayout.addStretch()
+        textLayoutt.addLayout(infoLayout)
 
-        self.__text = QtGui.QLabel("textaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+        self.__text = QtGui.QLabel()
         self.__text.setWordWrap(True)
-        self.__textLayout.addWidget(self.__text)
-        self.__layout.addLayout(self.__textLayout)
+        textLayoutt.addWidget(self.__text)
+        rootLayout.addLayout(textLayoutt)
 
-        self.setLayout(self.__layout)
+        self.setLayout(rootLayout)
 
         if not item is None:
             self.setItem(item)
